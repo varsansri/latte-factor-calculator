@@ -25,6 +25,19 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is the latte factor?","acceptedAnswer":{"@type":"Answer","text":"The latte factor is a personal finance concept popularized by David Bach. It refers to small, habitual daily expenses (like a $5 coffee) that seem insignificant but compound into large amounts of lost wealth over time when you account for the opportunity cost of investing that money instead."}},
+    {"@type":"Question","name":"How much does a daily $5 coffee cost over 20 years?","acceptedAnswer":{"@type":"Answer","text":"A $5 daily coffee costs $1,825 per year in direct spending. But invested at 7% annual return over 20 years, that same money would grow to approximately $96,000. The true 'latte factor' cost of that habit is the difference: nearly $96,000 in lost wealth."}},
+    {"@type":"Question","name":"Is the latte factor concept accurate?","acceptedAnswer":{"@type":"Answer","text":"The math is accurate — the compound interest calculation is real. Critics argue that small lifestyle expenses aren't the main reason people don't build wealth (income and housing costs matter more). However, the latte factor is useful as a framework for noticing how unconscious daily spending adds up, and for identifying which habits to reconsider."}},
+    {"@type":"Question","name":"What other habits can I apply the latte factor to?","acceptedAnswer":{"@type":"Answer","text":"The latte factor applies to any recurring habitual expense: daily takeout lunch ($12–20), cigarettes ($7–15/day), energy drinks ($3–5/day), unused subscriptions ($10–50/month), daily alcohol ($10–20/day), or impulse purchases. Use this calculator with any habit to see the true 10–30 year wealth impact."}},
+    {"@type":"Question","name":"How do I use the latte factor to build wealth?","acceptedAnswer":{"@type":"Answer","text":"Step 1: Identify daily or weekly habits. Step 2: Calculate their 10–20 year wealth cost using this calculator. Step 3: Decide which habits are worth the cost and which aren't. Step 4: Redirect the savings from cut habits into an index fund or investment account. Even redirecting $100/month can compound to $60,000+ over 20 years."}}
+  ]
+}
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -188,6 +201,18 @@ select{
 }
 footer{text-align:center;padding:12px;font-size:11px;color:var(--text-muted);opacity:.7}
 footer a{color:var(--accent);text-decoration:none}
+.faq-section{margin-top:8px;margin-bottom:4px}
+.faq-title{font-size:14px;font-weight:700;color:var(--text-muted);margin-bottom:12px;padding:0 2px}
+.faq-list{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.faq-item summary{padding:12px 16px;font-size:13px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;-webkit-tap-highlight-color:transparent}
+.faq-item summary::after{content:'›';font-size:18px;color:var(--accent);transition:transform .2s;flex-shrink:0;margin-left:8px}
+.faq-item[open] summary::after{transform:rotate(90deg)}
+.faq-item p{padding:0 16px 12px;font-size:12px;color:var(--text-muted);line-height:1.6}
+.seo-text{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+.seo-text h2{font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.seo-text p{font-size:12px;color:var(--text-muted);line-height:1.65;margin-bottom:10px}
+.seo-text p:last-child{margin-bottom:0}
 </style>
 </head>
 <body>
@@ -330,7 +355,39 @@ footer a{color:var(--accent);text-decoration:none}
 
   </div>
 
-  <footer>Free money tools by <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener">Maxi D Bobby Signals</a> · For education only</footer>
+  <section class="faq-section">
+    <h2 class="faq-title">Latte Factor Calculator — Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is the latte factor?</summary>
+        <p>The latte factor is a personal finance concept showing how small daily habits (like a $5 coffee) compound into massive lost wealth. Invested at 7% over 20 years, that daily $5 becomes ~$96,000. The question isn't whether to drink coffee — it's whether you know the real cost.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How much does a daily $5 coffee cost over 20 years?</summary>
+        <p>Direct spending: $1,825/year × 20 = $36,500. Opportunity cost (invested at 7%): approximately $96,000. The wealth gap is the money that compounds silently while you're buying coffee. Enter your numbers above to see your exact figure.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What other habits can I calculate with this tool?</summary>
+        <p>Any recurring expense: daily takeout ($12–20), cigarettes ($7–15/day), energy drinks ($3–5), unused subscriptions ($10–50/month), daily alcohol, or impulse buys. The tool works for any habit — just enter the cost and frequency.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is the latte factor concept accurate?</summary>
+        <p>The compound interest math is 100% accurate. Critics argue income and housing costs matter more to wealth-building — and they're right. But the latte factor is useful for noticing unconscious daily spending and deciding which habits align with your wealth goals.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What investment return should I use in the calculator?</summary>
+        <p>The S&P 500 has historically averaged ~10% annually before inflation. A conservative realistic estimate is 7% (accounting for inflation and fees). Use 7% for a realistic baseline, 10% if you're optimistic, and 4–6% if you invest in bonds or balanced funds.</p>
+      </details>
+    </div>
+    <div class="seo-text">
+      <h2>The True Cost of Daily Habits — Latte Factor Wealth Calculator</h2>
+      <p>The latte factor concept reveals a truth most people never calculate: small, automatic daily expenses don't just cost what you pay — they cost the compounded wealth you never build. A $5 daily coffee is $1,825 per year. Invested consistently at 7% annual return, that grows to over $96,000 in 20 years. The coffee didn't just cost $5. It cost you $96,000.</p>
+      <p>This calculator uses the same compound interest formula used by financial planners: FV = PMT × [((1 + r)^n − 1) / r] × (1 + r). It converts your daily habit cost into monthly contributions and projects the future value if you had invested that money instead. The result isn't meant to make you feel guilty — it's meant to make your financial choices conscious rather than automatic.</p>
+      <p>Apply this to any habit: cigarettes, takeout lunches, streaming subscriptions you barely use, or daily energy drinks. The equivalents section puts the number in perspective — you may find that one habit is costing you a year's rent, a car, or multiple international trips per decade. Use the insight to decide what's actually worth it to you.</p>
+    </div>
+  </section>
+
+  <footer>Free tools by <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener">DTB Academy</a> · For education only</footer>
 </div>
 
 <div class="sticky">
