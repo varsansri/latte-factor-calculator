@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Latte Factor Calculator — True Cost of Daily Habits on Your Wealth</title>
+<meta name="description" content="See how much your daily habits are really costing you in lost wealth. Calculate the shocking compound opportunity cost of coffee, takeout, subscriptions, and more.">
+<meta name="keywords" content="latte factor calculator, daily habit true cost, compound cost calculator, small spending big impact calculator, how much does coffee cost over lifetime, habit wealth calculator, daily spending opportunity cost">
+<link rel="canonical" href="https://varsansri.github.io/latte-factor-calculator/">
+<meta property="og:title" content="Latte Factor Calculator — The True Cost of Daily Habits">
+<meta property="og:description" content="That $5 coffee isn't costing you $5. Over 20 years, it's costing you $60,000 in lost wealth. See your number.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Latte Factor Calculator — The True Cost of Daily Habits">
+<meta name="twitter:description" content="Your daily habits are destroying your wealth silently. See the real number.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Latte Factor True Cost Calculator",
+  "description": "Calculate the compound opportunity cost of daily spending habits over time. See how small daily expenses grow into massive lost wealth.",
+  "url": "https://varsansri.github.io/latte-factor-calculator/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;
+  --surface:#111118;
+  --surface2:#181820;
+  --accent:#ff6b35;
+  --accent-dim:rgba(255,107,53,0.09);
+  --accent-border:rgba(255,107,53,0.28);
+  --text:#efefef;
+  --text-muted:#6b6b80;
+  --border:rgba(255,255,255,0.07);
+  --green:#00e87a;
+  --green-dim:rgba(0,232,122,0.10);
+  --yellow:#ffd93d;
+  --yellow-dim:rgba(255,217,61,0.10);
+  --red:#ff4d4d;
+  --red-dim:rgba(255,77,77,0.10);
+  --radius:14px;
+  --ease:0.2s ease;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  min-height:100vh;padding-bottom:76px;line-height:1.5;
+}
+.wrap{max-width:500px;margin:0 auto;padding:16px 14px 32px}
+
+.header{text-align:center;padding:22px 0 18px}
+.badge{
+  display:inline-block;background:var(--accent-dim);border:1px solid var(--accent-border);
+  color:var(--accent);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 14px;border-radius:20px;margin-bottom:14px;
+}
+h1{font-size:clamp(20px,5.5vw,28px);font-weight:800;line-height:1.25;margin-bottom:8px}
+h1 .hl{color:var(--accent)}
+.tagline{color:var(--text-muted);font-size:13px;max-width:310px;margin:0 auto}
+h2{font-size:13px;color:var(--text-muted);font-weight:400;margin-top:4px}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+.card-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px}
+
+.ig{margin-bottom:14px}
+.il{display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:6px}
+.il .hint{opacity:.6;font-size:11px}
+.ir{display:flex;gap:8px;align-items:center}
+.prefix{
+  background:var(--surface2);border:1px solid var(--border);border-radius:8px;
+  padding:10px 12px;font-size:12px;color:var(--text-muted);flex-shrink:0;min-width:34px;text-align:center;
+}
+input[type=number],input[type=text],select{
+  width:100%;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;color:var(--text);font-size:15px;
+  padding:10px 14px;outline:none;
+  transition:border-color var(--ease),box-shadow var(--ease);
+  -webkit-appearance:none;appearance:none;
+}
+input[type=number]:focus,input[type=text]:focus,select:focus{
+  border-color:var(--accent-border);box-shadow:0 0 0 3px var(--accent-dim);
+}
+input[type=number]::-webkit-inner-spin-button{opacity:1}
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6' fill='%23666'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:34px;
+}
+.divider{border:none;border-top:1px solid var(--border);margin:6px 0 16px}
+
+.calc-btn{
+  width:100%;background:var(--accent);color:#fff;font-size:15px;font-weight:800;
+  padding:14px;border:none;border-radius:var(--radius);cursor:pointer;
+  transition:opacity var(--ease),transform var(--ease);-webkit-tap-highlight-color:transparent;
+}
+.calc-btn:active{opacity:.85;transform:scale(.98)}
+
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.shake{animation:shake .3s ease}
+.field-error{border-color:#ff4d4d!important}
+.results{display:none}
+.results.show{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Shock hero ── */
+.result-main{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px}
+.shock-hero{
+  text-align:center;padding:20px 0 22px;
+  border-bottom:1px solid var(--border);margin-bottom:18px;
+}
+.sh-pretitle{font-size:12px;color:var(--text-muted);margin-bottom:6px}
+.sh-value{font-size:52px;font-weight:900;line-height:1;letter-spacing:-2px;color:var(--accent)}
+.sh-label{font-size:13px;color:var(--text-muted);margin-top:6px}
+.sh-name{color:var(--accent);font-weight:700}
+
+/* ── Timeline bars ── */
+.timeline{margin-bottom:16px}
+.tl-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px}
+.tl-row{margin-bottom:10px}
+.tl-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.tl-label .tl-name{color:var(--text-muted)}
+.tl-label .tl-val{font-weight:700;color:var(--text)}
+.tl-bar-bg{background:var(--surface2);border-radius:4px;height:8px;overflow:hidden}
+.tl-bar{height:100%;border-radius:4px;transition:width .6s ease}
+.bar-spent{background:var(--red)}
+.bar-invest{background:var(--accent)}
+
+/* ── Stats grid ── */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--surface2);border-radius:10px;padding:12px}
+.stat .sl{font-size:10px;color:var(--text-muted);margin-bottom:4px;letter-spacing:.5px}
+.stat .sv{font-size:17px;font-weight:700}
+
+/* ── Equivalents ── */
+.equiv-section{margin-top:14px}
+.equiv-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
+.equiv-list{display:flex;flex-direction:column;gap:6px}
+.equiv-item{
+  background:var(--surface2);border-radius:8px;padding:10px 12px;
+  font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;
+}
+.equiv-item .eq-val{font-weight:700;color:var(--accent)}
+
+.tg-cta{
+  background:linear-gradient(135deg,rgba(255,107,53,.07),rgba(255,107,53,.01));
+  border:1px solid var(--accent-border);border-radius:var(--radius);padding:18px;margin-bottom:12px;
+}
+.tg-title{font-size:14px;font-weight:700;margin-bottom:6px}
+.tg-body{font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:14px}
+.tg-body strong{color:var(--accent)}
+.tg-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--accent);color:#fff;font-weight:800;font-size:13px;
+  padding:12px 20px;border-radius:9px;text-decoration:none;
+  transition:opacity var(--ease);-webkit-tap-highlight-color:transparent;
+}
+.tg-btn:active{opacity:.85}
+
+.share-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px}
+.share-label{font-size:10px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.share-btns{display:flex;gap:8px}
+.sb{
+  flex:1;padding:10px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;
+  border:1px solid var(--border);background:var(--surface2);color:var(--text);
+  transition:all var(--ease);text-align:center;-webkit-tap-highlight-color:transparent;
+}
+.sb.wa{background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.25);color:#25d366}
+.sb.cp{color:var(--accent);border-color:var(--accent-border)}
+.sb:active{transform:scale(.97)}
+
+.sticky{
+  position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,15,.96);
+  border-top:1px solid var(--accent-border);padding:10px 16px;
+  display:flex;align-items:center;gap:12px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:200;
+}
+.sticky .st{font-size:11px;color:var(--text-muted);flex:1;line-height:1.4}
+.sticky .st strong{color:var(--accent);font-size:12px;display:block}
+.sticky-btn{
+  background:var(--accent);color:#fff;font-weight:800;font-size:11px;
+  padding:8px 14px;border-radius:8px;text-decoration:none;white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+footer{text-align:center;padding:12px;font-size:11px;color:var(--text-muted);opacity:.7}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <div class="badge">Money Psychology Tool</div>
+    <h1>Latte Factor <span class="hl">True Cost</span> Calculator</h1>
+    <h2>How much is my daily habit really costing me in wealth?</h2>
+    <p class="tagline">Small daily expenses compound into massive lost wealth. See the shocking real number for your habit.</p>
+  </header>
+
+  <div class="card">
+    <div class="card-label">Your Daily Habit</div>
+
+    <div class="ig">
+      <div class="il"><span>What's the habit?</span><span class="hint">e.g. Coffee, cigarettes, takeout</span></div>
+      <input type="text" id="habitName" placeholder="e.g. Morning coffee" maxlength="40">
+    </div>
+
+    <div class="ig">
+      <div class="il"><span>Cost Per Time</span><span class="hint">how much each time</span></div>
+      <div class="ir">
+        <div class="prefix">$</div>
+        <input type="number" id="habitCost" placeholder="e.g. 5.50" min="0.01" step="0.01" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="ig">
+      <div class="il"><span>How Often</span><span class="hint"></span></div>
+      <select id="frequency">
+        <option value="7" selected>Every day (7×/week)</option>
+        <option value="5">Weekdays only (5×/week)</option>
+        <option value="3">3 times a week</option>
+        <option value="2">Twice a week</option>
+        <option value="1">Once a week</option>
+        <option value="4.33">Daily but monthly billing (÷30/day)</option>
+      </select>
+    </div>
+
+    <div class="ig">
+      <div class="il"><span>Calculate Over</span><span class="hint">years</span></div>
+      <select id="years">
+        <option value="1">1 year</option>
+        <option value="5">5 years</option>
+        <option value="10" selected>10 years</option>
+        <option value="15">15 years</option>
+        <option value="20">20 years</option>
+        <option value="30">30 years</option>
+      </select>
+    </div>
+
+    <div class="ig">
+      <div class="il"><span>Expected Annual Investment Return</span><span class="hint">S&P500 avg is ~10%</span></div>
+      <select id="returnRate">
+        <option value="4">4% — bonds / conservative</option>
+        <option value="6">6% — balanced portfolio</option>
+        <option value="7" selected>7% — stock market average</option>
+        <option value="10">10% — S&P 500 historical</option>
+        <option value="12">12% — active investor</option>
+        <option value="15">15% — optimistic</option>
+      </select>
+    </div>
+
+    <hr class="divider">
+    <button class="calc-btn" onclick="calculate()">Show Me the True Cost →</button>
+  </div>
+
+  <div class="results" id="results">
+
+    <div class="result-main">
+      <div class="shock-hero">
+        <div class="sh-pretitle">Your <span class="sh-name" id="habitDisplay">habit</span> is costing you</div>
+        <div class="sh-value" id="trueCost">$0</div>
+        <div class="sh-label">in lost wealth over <span id="yearsDisplay">10</span> years</div>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-title">Spent vs Could Have Had</div>
+        <div class="tl-row">
+          <div class="tl-label">
+            <span class="tl-name">Actually spent (raw)</span>
+            <span class="tl-val" id="rawSpent">—</span>
+          </div>
+          <div class="tl-bar-bg"><div class="tl-bar bar-spent" id="barSpent" style="width:0%"></div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-label">
+            <span class="tl-name">Could have had (invested)</span>
+            <span class="tl-val" id="invested">—</span>
+          </div>
+          <div class="tl-bar-bg"><div class="tl-bar bar-invest" id="barInvest" style="width:100%"></div></div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="sl">Cost per week</div>
+          <div class="sv" id="weekCost">—</div>
+        </div>
+        <div class="stat">
+          <div class="sl">Cost per year</div>
+          <div class="sv" id="yearCost">—</div>
+        </div>
+        <div class="stat">
+          <div class="sl">Opportunity multiplier</div>
+          <div class="sv" id="multiplier" style="color:var(--accent)">—</div>
+        </div>
+        <div class="stat">
+          <div class="sl">Habit starts costing &gt;$10k</div>
+          <div class="sv" id="tenKYear">—</div>
+        </div>
+      </div>
+
+      <div class="equiv-section">
+        <div class="equiv-title">What that money equals</div>
+        <div class="equiv-list" id="equivList"></div>
+      </div>
+    </div>
+
+    <div class="tg-cta">
+      <div class="tg-title">You just saw the real cost. Now build wealth instead.</div>
+      <div class="tg-body">
+        Knowing the number is the first step. The second is <strong>putting that money to work</strong>.
+        Our free community covers practical strategies for building wealth —
+        from <strong>investing basics to trading signals</strong> — all free, no upsell.
+      </div>
+      <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener noreferrer" class="tg-btn">
+        💰 Join Free Wealth-Building Community →
+      </a>
+    </div>
+
+    <div class="share-card">
+      <div class="share-label">Share this tool</div>
+      <div class="share-btns">
+        <button class="sb cp" onclick="copyLink(this)">📋 Copy Link</button>
+        <button class="sb wa" onclick="shareWA()">💬 WhatsApp</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>Free money tools by <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener">Maxi D Bobby Signals</a> · For education only</footer>
+</div>
+
+<div class="sticky">
+  <div class="st">
+    <strong>💰 Build Wealth — Free Community</strong>
+    Signals, strategies, and tools →
+  </div>
+  <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener noreferrer" class="sticky-btn">Join Free</a>
+</div>
+
+<script>
+function fmtK(n){
+  if (n >= 1000000) return '$' + (n/1000000).toFixed(2) + 'M';
+  if (n >= 1000)    return '$' + (n/1000).toFixed(1) + 'k';
+  return '$' + n.toFixed(0);
+}
+function fmtFull(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+
+function calculate(){
+  const habitName = document.getElementById('habitName').value.trim() || 'your habit';
+  const cost      = parseFloat(document.getElementById('habitCost').value);
+  const freq      = parseFloat(document.getElementById('frequency').value);  // times per week
+  const years     = parseInt(document.getElementById('years').value);
+  const rate      = parseFloat(document.getElementById('returnRate').value) / 100;
+
+  if (!cost || cost <= 0){ shake('habitCost'); return; }
+
+  // Basic spend calcs
+  const weeklySpend   = cost * freq;
+  const monthlySpend  = weeklySpend * 4.33;
+  const annualSpend   = weeklySpend * 52;
+  const totalRawSpent = annualSpend * years;
+
+  // Future value of monthly investment
+  // FV = PMT × [((1 + r/12)^n - 1) / (r/12)] × (1 + r/12)
+  const r  = rate / 12;
+  const n  = years * 12;
+  const fv = r > 0
+    ? monthlySpend * (((Math.pow(1 + r, n) - 1) / r) * (1 + r))
+    : monthlySpend * n;
+
+  const multiplier  = totalRawSpent > 0 ? fv / totalRawSpent : 1;
+
+  // Year when opportunity cost first exceeds $10,000
+  let tenKYear = '> ' + years + ' yrs';
+  for (let y = 1; y <= years; y++){
+    const nY  = y * 12;
+    const fvY = r > 0
+      ? monthlySpend * (((Math.pow(1 + r, nY) - 1) / r) * (1 + r))
+      : monthlySpend * nY;
+    if (fvY >= 10000){ tenKYear = 'Year ' + y; break; }
+  }
+
+  // Update DOM
+  document.getElementById('habitDisplay').textContent = habitName;
+  document.getElementById('trueCost').textContent     = fmtFull(fv);
+  document.getElementById('yearsDisplay').textContent = years;
+  document.getElementById('rawSpent').textContent     = fmtFull(totalRawSpent);
+  document.getElementById('invested').textContent     = fmtFull(fv);
+  document.getElementById('weekCost').textContent     = fmtFull(weeklySpend) + '/wk';
+  document.getElementById('yearCost').textContent     = fmtFull(annualSpend) + '/yr';
+  document.getElementById('multiplier').textContent   = multiplier.toFixed(1) + '×';
+  document.getElementById('tenKYear').textContent     = tenKYear;
+
+  // Bar widths (relative to fv which is always bigger)
+  const spentPct = totalRawSpent / fv * 100;
+  document.getElementById('barSpent').style.width  = Math.min(100, spentPct) + '%';
+  document.getElementById('barInvest').style.width = '100%';
+
+  // Equivalents
+  const equivList = document.getElementById('equivList');
+  const equivs = [
+    { label: 'Months of rent at $1,500/mo',  val: (fv / 1500).toFixed(0) + ' months'  },
+    { label: 'Return flights to Bali',        val: (fv / 600).toFixed(0) + ' flights'   },
+    { label: 'Years of groceries at $400/mo', val: (fv / 4800).toFixed(1) + ' years'    },
+    { label: 'Brand new cars at $30,000',     val: (fv / 30000).toFixed(1) + ' cars'    },
+  ];
+  equivList.innerHTML = equivs.map(e =>
+    `<div class="equiv-item"><span>${e.label}</span><span class="eq-val">${e.val}</span></div>`
+  ).join('');
+
+  // Show
+  const res = document.getElementById('results');
+  res.classList.add('show');
+  setTimeout(() => res.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
+}
+
+function shake(id){
+  const el = document.getElementById(id);
+  el.classList.add('field-error','shake');
+  setTimeout(()=>el.classList.remove('field-error','shake'), 600);
+}
+
+function copyLink(btn){
+  navigator.clipboard.writeText(window.location.href).then(()=>{
+    btn.textContent = '✓ Copied!';
+    btn.style.cssText = 'background:rgba(255,107,53,.1);border-color:rgba(255,107,53,.3);color:#ff6b35';
+    setTimeout(()=>{ btn.textContent='📋 Copy Link'; btn.style.cssText=''; }, 2200);
+  });
+}
+
+function shareWA(){
+  const msg = encodeURIComponent('Bro found this free tool — Latte Factor Calculator. Actually useful: ' + window.location.href + ' 🔥');
+  window.open('https://wa.me/?text=' + msg, '_blank');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+</script>
+</body>
+</html>
